@@ -5,6 +5,7 @@ const { QuotesController } = require("../controllers");
 
 router.get("/quotes", QuotesController.index);
 router.get("/quotes/all", QuotesController.get);
+// añadir desde el postman más citas
 router.post("/quotes", QuotesController.add);
 
 module.exports = router;

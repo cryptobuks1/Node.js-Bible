@@ -1,6 +1,6 @@
 const path = require("path");
 
-const DB_PATH = path.join(__dirname + "/../data/db.json");
+const DB_PATH = path.join(__dirname ,"..","data", "db.json");
 let db = require(DB_PATH);
 
 const fs = require("fs");
@@ -19,12 +19,16 @@ class QuotesController {
     return res.send(db);
   }
 
+  // añadir una nueva cita desde postman
   async add(req, res) {
+   // recogemos lo que viene en el body
     const { body: quote } = req;
+    // revogemos cuantos objetos hay
     const lastQuote = db[db.lenght - 1];
     const { id } = lastQuote;
+    // siguiente id libre
     quote.id = id + 1;
-    // array de base de datos
+    // añadimos al array de base de datos
     db.push(quote);
     // escribirlo en el archivo de nuestra bd
     fs.writeFileSync(DB_PATH, JSON.stringify(db));
