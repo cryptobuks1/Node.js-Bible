@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "seed":"node ./seeds/projectsSeed.js" 
+    "seed": "node ./seeds/projectsSeed.js"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +14,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.9.18"
+    "mongoose": "^5.9.19"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

@@ -6,6 +6,7 @@ const ProjectSchema = new Schema(
     description: { type: String },
     image: { type: String },
     tags: [{ type: String }],
+    logo:{type:String}
   },
   {
     timestamps: { createdAt: true, updatedAt: true },

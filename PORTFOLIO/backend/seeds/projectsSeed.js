@@ -1,3 +1,5 @@
+// correr el seed => npm run seed
+
 const mongoose = require("mongoose");
 const { MONGO_URI } = require("../config");
 const { Project } = require("../models");
@@ -88,7 +90,7 @@ const projects = [
 
 Project.create(projects)
   .then(() => {
-    console.log("Projecto creado");
+    console.log("Proyecto creado");
     mongoose.disconnect();
   })
   .catch(console.log);
