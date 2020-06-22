@@ -22,7 +22,7 @@ server.get("/api/projects", async (req, res) => {
 
   projects = projects.map((projects) => {
     // nos devolvería => http://localhost:3000/img/image.jpeg
-    projects.logo = `${req.protocol}://${req.headers.host}/img/${projects.logo}`;
+    projects.image = `${req.protocol}://${req.headers.host}/img/${projects.image}`;
     return projects;
   });
   return res.send({ error: false, data: projects });
@@ -31,17 +31,21 @@ server.get("/api/projects", async (req, res) => {
 server.get("/api/project/:id", async (req, res) => {
   const { id } = req.params;
   let project = await Project.findById(id);
-  project.logo = `${req.protocol}://${req.headers.host}/img/${project.logo}`;
+  project.image = `${req.protocol}://${req.headers.host}/img/${project.image}`;
+  console.log(project);
+  
   return res.send({ error: false, data: project });
 });
 
-server.get("/api/project/search/:name", async (req, res) => {
-  const {name} = req.params;
+server.get("/api/project/search/:tags", async (req, res) => {
+  const {tags} = req.params;
+  
   // la i se utiliza para evitar CamelCase
-  let projects = await Project.find({name:{$regex:new RegExp(name,"i")}});
+  // cambiado name por tags
+  let projects = await Project.find({tags:{$regex:new RegExp(tags,"i")}});
   projects = projects.map((projects) => {
     // nos devolvería => http://localhost:3000/img/image.jpeg
-    projects.logo = `${req.protocol}://${req.headers.host}/img/${projects.logo}`;
+    projects.image = `${req.protocol}://${req.headers.host}/img/${projects.image}`;
     return projects;
   });
   return res.send({ error: false, data: projects });

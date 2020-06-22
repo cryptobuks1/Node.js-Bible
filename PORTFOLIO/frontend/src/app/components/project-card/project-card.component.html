@@ -1,0 +1,21 @@
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top p-3" [src]="project.image" [alt]="project.name" />
+  <div class="card-body">
+    <h5 class="card-title">{{ project.name }}</h5>
+    <p class="card-text block-with-text">
+      {{ project.description }}
+    </p>
+  </div>
+  <div class="card-footer d-flex justify-content-between">
+  <div>
+    <small class="text-muted" *ngFor="let tag of project.tags">
+      <a>{{ tag }} </a>
+    </small>
+  </div>
+
+    <a [routerLink]="['/project', project._id]" class="btn-outline-primary"
+      >Ver más</a
+    >
+
+  </div>
+</div>
