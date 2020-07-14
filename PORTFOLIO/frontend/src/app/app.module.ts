@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +10,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ProjectComponent } from './pages/project/project.component'
 
@@ -28,7 +29,7 @@ import { ProjectComponent } from './pages/project/project.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

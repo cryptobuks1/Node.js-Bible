@@ -18,7 +18,7 @@ export class HttpService {
     return this._http.get<Project>(this.baseUrl + "/project/" + id);
   }
   public searchProject(query: string) {
-    return this._http.get<Project>(this.baseUrl + "/project/search/" + query);
+    return this._http.get<Project[]>(this.baseUrl + "/project/search/" + query);
   }
 
 

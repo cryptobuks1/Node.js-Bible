@@ -1,1 +1,19 @@
-<h1>Search</h1>
+<h1>
+  Lenguaje
+  <small>
+    {{ query }}
+  </small>
+</h1>
+
+<div class="row" *ngIf="projects.length == 0">
+  <div class="col-md-12">
+    <div class="alert alert-info">
+      NO existe nada con esa tecnología{{ query }}
+    </div>
+  </div>
+</div>
+
+<div class="card-group d-flex justify-content-center">
+  <app-project-card [project]="project" *ngFor="let project of projects">
+  </app-project-card>
+</div>
