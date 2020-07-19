@@ -1,1 +1,4 @@
-'use strict'
+
+module.exports = {
+    HomeController: require('./home.controller')
+}
