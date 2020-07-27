@@ -1,13 +1,16 @@
 npm install
 express 
 express-async-errors 
-awilix cors compression 
+awilix
+cors
+compression 
 helmet 
 bcryptjs 
 jsnwebtoken 
 memory-cache 
 mongoose 
 swagger-ui-express
+mongoose-autopopulate
 
 
 

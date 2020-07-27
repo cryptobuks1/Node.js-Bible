@@ -1,6 +1,7 @@
 // clase que le da inicio a la aplicación
 const express = require("express");
 // const { resolve } = require("./container");
+// para que sean legibles en esta clase solamente se les inicia a null
 let _express = null;
 let _config = null;
 
@@ -11,11 +12,10 @@ class Server {
   }
   // inicializar el servidor
   start() {
-    console.log(_config.APLICATION_NAME);
     return new Promise((resolve) => {
       _express.listen(_config.PORT, () => {
         console.log(
-          _config.APLICATION_NAME +
+          _config.APLICATION_NAME   +
             " API corriendo en el puerto " +
             _config.PORT
         );

@@ -1,6 +1,7 @@
 let _homeService = null;
 
 class HomeController {
+    // el parámetro HomeService se lo pasa el container (homeService). Se ha de llamar igual.
     constructor({HomeService}){
         _homeService = HomeService;
     }
