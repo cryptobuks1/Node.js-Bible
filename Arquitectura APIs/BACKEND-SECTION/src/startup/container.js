@@ -22,6 +22,13 @@ const container = createContainer();
 // models
 const { User, Comment, Idea } = require("../models");
 
+// repositorios
+const {
+  UserRepository,
+  IdeaRepository,
+  CommentRepository,
+} = require("../repositories");
+
 // inyección de clase, segmentado en varios registros
 container
   .register({
@@ -46,9 +53,14 @@ container
     HomeRoutes: asFunction(HomeRoutes).singleton(),
   })
   .register({
-    User:asValue(User),
-    Idea:asValue(idea),
-    Comment:asValue(comment),
+    User: asValue(User),
+    Idea: asValue(Idea),
+    Comment: asValue(Comment),
   })
+  .register({
+    UserRepository: asClass(UserRepository).singleton(),
+    IdeaRepository: asClass(IdeaRepository).singleton(),
+    CommentRepository: asClass(CommentRepository).singleton(),
+  });
 
 module.exports = container;
