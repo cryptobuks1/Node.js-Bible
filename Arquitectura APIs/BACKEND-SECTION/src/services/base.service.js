@@ -1,9 +1,11 @@
 class BaseService {
+  // va a recibir un repositorio de tipo user, comment o idea
   constructor(repository) {
     this.repository = repository;
   }
 
   async get(id) {
+    // si el id no es enviado
     if (!id) {
       const error = new Error();
       error.status = 400;
@@ -11,6 +13,7 @@ class BaseService {
       // el throw lo atrapa el middelware error
       throw error;
     }
+    // en caso de que existe buscamos la entidad(usuario, idea, comentario)
     const currentEntity = await this.repository.get(id);
     
     if (!currentEntity) {
