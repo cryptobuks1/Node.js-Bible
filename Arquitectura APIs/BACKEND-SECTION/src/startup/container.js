@@ -3,7 +3,12 @@
 const { createContainer, asClass, asValue, asFunction } = require("awilix");
 // Importamos capas a usar
 //services
-const { HomeService } = require("../services");
+const {
+  HomeService,
+  UserService,
+  IdeaService,
+  CommentService,
+} = require("../services");
 
 // config
 const config = require("../config");
@@ -42,6 +47,9 @@ container
     // singleton pide que siempre sea la misma instancia de la clase compartida con las diferentes partes
     // inyecta la clase HomeService en el controlador
     HomeService: asClass(HomeService).singleton(),
+    UserService: asClass(UserService).singleton(),
+    IdeaService: asClass(IdeaService).singleton(),
+    CommentService: asClass(CommentService).singleton(),
   })
   .register({
     // controladores
