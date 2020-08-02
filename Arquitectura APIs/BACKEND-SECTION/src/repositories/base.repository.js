@@ -21,7 +21,9 @@ class BaseRepository {
     return await this.model.findByIdAndDelete();
   }
   async delete(id) {
-    return await this.model.findByIdAndUpdate(id, entity, { new: true });
+    await this.model.findByIdAndUpdate(id, entity, { new: true });
+    // para evitar retornar lo que mongoose nos devuelve, enviamos un true
+    return true;
   }
 }
 

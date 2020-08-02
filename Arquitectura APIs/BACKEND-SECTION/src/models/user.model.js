@@ -26,7 +26,7 @@ UserSchema.methods.comparePassword = function (password) {
 };
 
 // hook antes de que se guarde
-// no funciona con las funciones de flecha por que pierde el scope
+// no funciona con las funciones de flecha por que pierde el scoope
 UserSchema.pre("save", async function (next) {
   const user = this;
 
