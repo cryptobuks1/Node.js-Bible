@@ -21,3 +21,9 @@ dotenv
 nodemon 
 mockingoose 
 jest
+
+
+.env
+APLICATION_NAME = "Share Your Idea"
+PORT=5000
+MONGO_URI = "mongodb://ideas_user:qc4WSNbL39CnNQq@cluster0-shard-00-00.urf8y.azure.mongodb.net:27017,cluster0-shard-00-01.urf8y.azure.mongodb.net:27017,cluster0-shard-00-02.urf8y.azure.mongodb.net:27017/forIdeas?ssl=true&replicaSet=atlas-mmdjmt-shard-0&authSource=admin&retryWrites=true&w=majority"
