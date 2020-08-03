@@ -1,13 +1,14 @@
-// contenedor de inyección de dependencias
+// contenedor de inyección de dependencias controlado por AWILIX
 // inyectar objetos como si fuesen (asClass(clase), asValue(valor), asFunction(función))
 const { createContainer, asClass, asValue, asFunction } = require("awilix");
-// Importamos capas a usar
+// Importamos capas a usar (Solicitar)
 //services
 const {
   HomeService,
   UserService,
   IdeaService,
   CommentService,
+  AuthService,
 } = require("../services");
 
 // config
@@ -21,10 +22,17 @@ const {
   UserController,
   IdeaController,
   CommentController,
+  AuthController
 } = require("../controllers");
 
 // routes
-const { HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes } = require("../routes/index.routes");
+const {
+  HomeRoutes,
+  UserRoutes,
+  IdeaRoutes,
+  CommentRoutes,
+  AuthRoutes
+} = require("../routes/index.routes");
 const Routes = require("../routes");
 
 const container = createContainer();
@@ -55,6 +63,7 @@ container
     UserService: asClass(UserService).singleton(),
     IdeaService: asClass(IdeaService).singleton(),
     CommentService: asClass(CommentService).singleton(),
+    AuthService: asClass(AuthService).singleton(),
   })
   .register({
     // controladores
@@ -62,6 +71,7 @@ container
     HomeController: asClass(HomeController.bind(HomeController)).singleton(),
     UserController: asClass(UserController.bind(UserController)).singleton(),
     IdeaController: asClass(IdeaController.bind(IdeaController)).singleton(),
+    AuthController: asClass(AuthController.bind(AuthController)).singleton(),
     CommentController: asClass(
       CommentController.bind(CommentController)
     ).singleton(),
@@ -72,6 +82,7 @@ container
     UserRoutes: asFunction(UserRoutes).singleton(),
     IdeaRoutes: asFunction(IdeaRoutes).singleton(),
     CommentRoutes: asFunction(CommentRoutes).singleton(),
+    AuthRoutes: asFunction(AuthRoutes).singleton(),
   })
   .register({
     User: asValue(User),
