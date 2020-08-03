@@ -1,7 +1,7 @@
 let _ideaService = null;
 class IdeaController {
-  constructor({ IdeaController }) {
-    _ideaService = IdeaController;
+  constructor({ IdeaService }) {
+    _ideaService = IdeaService;
   }
 
   async get(req, res) {

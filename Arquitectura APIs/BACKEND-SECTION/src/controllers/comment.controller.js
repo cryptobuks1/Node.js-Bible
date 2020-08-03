@@ -24,9 +24,9 @@ class CommentController {
     return res.send(deletedComment);
   }
 
-  async gerIdeasComments(req, res) {
+  async getIdeaComments(req, res) {
     const { ideaID } = req.params;
-    const comments = await _commentService.gerIdeasComments(ideaID);
+    const comments = await _commentService.getIdeaComments(ideaID);
     return res.send(comments);
   }
 
