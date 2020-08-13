@@ -10,7 +10,8 @@ class IdeaController {
     return res.send(idea);
   }
   async getAll(req, res) {
-    const idea = await _ideaService.getAll();
+    const { pageSize, pageNum } = req.query;
+    const idea = await _ideaService.getAll(pageSize, pageNum);
     return res.send(idea);
   }
 

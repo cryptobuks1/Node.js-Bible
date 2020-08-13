@@ -10,15 +10,17 @@ const UserSchema = new Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
 });
+// cada vez que se lea un objeto de tipo user
 // Modificamos el método toJson que utiliza mongoose
 // eliminamos el campo contraseña
-UserSchema.methods.toJson = function () {
+UserSchema.methods.toJSON = function () {
   // método que usa mongoose para que convierta a un objeto js.
   let user = this.toObject();
   delete user.password;
   return user;
 };
 
+// todos los documentos de mongo se le incluyen estos métodos (UserSchema.methods.)
 // creamos el método para comparar contraseñas comparePassword
 UserSchema.methods.comparePassword = function (password) {
   // this corresponde al documento que se está manipulando.

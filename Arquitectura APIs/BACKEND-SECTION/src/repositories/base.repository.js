@@ -1,3 +1,4 @@
+// esta clase es heredada por todos los repositorios
 class BaseRepository {
   // recibe un modelo de mongoose
   constructor(model) {
@@ -9,8 +10,11 @@ class BaseRepository {
   }
 
   // retornar todos los documentos de una colección
-  async getAll() {
-    return await this.model.find();
+  // limitamos a 5 el número de recursos y la página que queremos saber con pageNum
+  async getAll(pageSize = 5, pageNum = 1) {
+    // páginación
+    const skips = pageSize * (pageNum - 1);
+    return await this.model.find().skip(skips).limit(pageSize);
   }
 
   async create(entity) {

@@ -9,20 +9,23 @@ class UserController {
     const user = await _userService.get(userID);
     return res.send(user);
   }
+
   async getAll(req, res) {
-    const users = await _userService.getAll();
+    const { pageSize, pageNum } = req.query;
+
+    const users = await _userService.getAll(pageSize, pageNum);
     return res.send(users);
   }
 
   async update(req, res) {
     const { body } = req;
-    const {userID} = req.params;
+    const { userID } = req.params;
     const updateUser = await _userService.update(userID, body);
     return res.send(updatedUser);
   }
 
   async delete(req, res) {
-    const {userID} = req.params;
+    const { userID } = req.params;
     const deletedUser = await _userService.delete(userID);
     // retornamos al cliente
     return res.send(deletedUser);
