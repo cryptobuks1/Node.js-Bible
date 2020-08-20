@@ -39,7 +39,6 @@ describe("User Repository Test", () => {
 
     const _userRepository = new UserRepository({ User });
     const expected = await _userRepository.getUserByUsername(_user.username);
-
     expect(JSON.parse(JSON.stringify(expected))).toMatchObject(_user);
   });
 
@@ -48,7 +47,6 @@ describe("User Repository Test", () => {
       delete user.password;
       return user;
     });
-
     mockingoose(User).toReturn(users, "find");
 
     const _userRepository = new UserRepository({ User });
@@ -60,6 +58,7 @@ describe("User Repository Test", () => {
     const _user = { ...user };
     delete _user.password;
     mockingoose(User).toReturn(_user, "findOneAndUpdate");
+
     const _userRepository = new UserRepository({ User });
     const expected = await _userRepository.update(user._id, {
       name: "PEpito de los palotes"
