@@ -36,7 +36,14 @@ class IdeaService extends BaseService {
     idea.upvotes.push(true);
 
     // manda a la base de datos
+    console.log("downvotes downvote service " + idea.upvotes);
     return await _ideaRepository.update(ideaID, { upvotes: idea.upvotes });
+  }
+
+  pruebaFallos() {
+    return {
+      message: "Esto es para probar el servicio ideaService",
+    };
   }
 
   // Dar un voto negativo
@@ -58,7 +65,7 @@ class IdeaService extends BaseService {
 
     // se queda en memoria
     idea.downvotes.push(true);
-
+    console.log("downvotes downvote service " + idea.downvotes);
     // manda a la base de datos
     return await _ideaRepository.update(ideaID, { downvotes: idea.downvotes });
   }

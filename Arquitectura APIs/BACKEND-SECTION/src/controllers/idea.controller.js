@@ -18,7 +18,7 @@ class IdeaController {
   async update(req, res) {
     const { body } = req;
     const { ideaID } = req.params;
-    const updateIdea = await _ideaService.update(ideaID, body);
+    const updatedIdea = await _ideaService.update(ideaID, body);
     return res.send(updatedIdea);
   }
 
@@ -43,12 +43,17 @@ class IdeaController {
   async upvoteIdea(req, res) {
     const { ideaID } = req.params;
     const idea = await _ideaService.upvoteIdea(ideaID);
+    console.log("desde idea controller upvote " + idea);
     return res.send(idea);
   }
   async downvoteIdea(req, res) {
     const { ideaID } = req.params;
     const idea = await _ideaService.downvoteIdea(ideaID);
+    console.log("desde idea controller downvote " + idea);
     return res.send(idea);
+  }
+  pruebaFallos(req,res){
+    return res.send(_ideaService.pruebaFallos())
   }
 }
 

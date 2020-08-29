@@ -26,10 +26,11 @@ class CommentService extends BaseService {
     }
     // desestructuramos los comentarios
     const { comments } = idea;
+    console.log(comments);
     return comments;
   }
 
-  async createComment(comment, ideaID) {
+  async createComment(comment, ideaID, userID) {
     if (!ideaID) {
       const error = new Error();
       error.status = 400;
@@ -46,9 +47,13 @@ class CommentService extends BaseService {
       throw error;
     }
 
-    const createComment = await _commentRepository.create(comment);
+    const createdComment = await _commentRepository.create({
+      ...comment,
+      author: userID,
+    });
     // las ideas pueden tener varios comentarios
-    idea.comments.push(createComment);
+    idea.comments.push(createdComment);
+
     // actualizamos la bbdd
     return await _ideaRepository.update(ideaID, { comments: idea.comments });
   }

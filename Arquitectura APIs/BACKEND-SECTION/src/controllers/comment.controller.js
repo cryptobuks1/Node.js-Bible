@@ -13,7 +13,7 @@ class CommentController {
   async update(req, res) {
     const { body } = req;
     const { commentID } = req.params;
-    const deletedComment = await _commentService.update(commentID, body);
+    const updatedComment = await _commentService.update(commentID, body);
     return res.send(updatedComment);
   }
 
@@ -26,14 +26,17 @@ class CommentController {
 
   async getIdeaComments(req, res) {
     const { ideaID } = req.params;
+    
     const comments = await _commentService.getIdeaComments(ideaID);
+    console.log("Desde Controller Comment getIdeasComments " + comments);
     return res.send(comments);
   }
 
   async createComment(req, res) {
     const { body } = req;
     const { ideaID } = req.params;
-    const createdComment = await _commentService.create(body, ideaID);
+    const { id: userID } = req.user;
+    const createdComment = await _commentService.createComment(body, ideaID, userID);
     return res.status(201).send(createdComment);
   }
 }
